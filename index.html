@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 20 Milliardäre | Eine Analyse der Mitte</title>
+    <style>
+        :root {
+            --mitte-orange: #ff7900;
+            --mitte-blue: #003366;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --pro-color: #27ae60;
+            --contra-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--mitte-blue);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--mitte-orange);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .statement-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--mitte-orange);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            background: var(--mitte-blue);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .meta-info {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .analysis-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        h4 {
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .pro h4 { color: var(--pro-color); }
+        .contra h4 { color: var(--contra-color); }
+
+        ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 5rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .analysis-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Global Wealth Watch</h1>
+    <p>Die 20 reichsten Personen der Welt – Eine wirtschaftspolitische Einordnung</p>
+</header>
+
+<div class="container">
+    <div class="statement-box">
+        <strong>Position der Mitte:</strong> Wir fördern Unternehmertum und Innovation als Motor für Wohlstand. 
+        Gleichzeitig mahnen wir die soziale Verantwortung an: Marktmacht darf den fairen Wettbewerb nicht ersticken, 
+        und internationale Konzerne müssen ihren Beitrag zum Gemeinwesen leisten.
+    </div>
+
+    <div id="loader" class="loading-spinner">Aktualisiere Echtzeit-Daten der Börsen...</div>
+    <div id="billionaire-grid" class="grid"></div>
+</div>
+
+<script>
+    // Politische Argumentations-Datenbank
+    const politicalAnalysis = {
+        "Elon Musk": {
+            pro: ["Pionier der Elektromobilität: Beschleunigt den globalen CO2-Ausstieg.", "Innovationskraft: Stärkt durch SpaceX und Starlink die westliche Technologie-Souveränität.", "Risikobereitschaft: Schafft tausende Arbeitsplätze in zukunftskritischen Branchen."],
+            contra: ["Führungsstil: Instabile Unternehmensführung gefährdet die Sicherheit der Arbeitnehmer.", "Mediale Macht: Nutzung von X (Twitter) zur Polarisierung untergräbt den demokratischen Konsens.", "Gewerkschaftsfeindlichkeit: Widerspricht dem Schweizer Modell der Sozialpartnerschaft."]
+        },
+        "Jeff Bezos": {
+            pro: ["Logistik-Effizienz: Senkt Kosten für Konsumenten und ermöglicht KMU globalen Absatz.", "Digitalisierung: AWS bildet das Rückgrat für moderne Cloud-Infrastruktur weltweit.", "Philanthropie: Massive Investitionen in Naturschutz durch den Bezos Earth Fund."],
+            contra: ["Steuervermeidung: Aggressive Optimierungspraktiken entziehen dem Staat wichtige Mittel.", "Marktdominanz: Setzt den lokalen Einzelhandel und KMU unter existenzbedrohenden Druck.", "Arbeitsbedingungen: Wiederkehrende Kritik an der Behandlung von Personal in Logistikzentren."]
+        },
+        "Bernard Arnault": {
+            pro: ["Kulturgut: Bewahrt und exportiert europäische Handwerkskunst und Qualität.", "Wirtschaftskraft: Beweis für die Stärke europäischer Familienunternehmen im globalen Markt.", "Steuerzahler: Leistet als einer der grössten Steuerzahler Frankreichs einen Beitrag zum Staat."],
+            contra: ["Ungleichheit: Fokus auf Ultra-Luxus symbolisiert die wachsende Schere zwischen Reich und Arm.", "Dynastien-Bildung: Konzentration von Macht in Familienbesitz behindert soziale Mobilität.", "Ressourcenverbrauch: Hoher ökologischer Fussabdruck der Fast-Luxury-Industrie."]
+        },
+        "Bill Gates": {
+            pro: ["Globale Gesundheit: Durchbruch bei der Bekämpfung von Malaria und Polio.", "Klimaforschung: Investiert Milliarden in Kernfusion und CO2-Speicherung.", "Engagement: Vorbild für 'Giving Pledge', Reichtum der Gesellschaft zurückzugeben."],
+            contra: ["Monopolbildung: Frühere Microsoft-Praktiken schadeten dem freien Software-Wettbewerb.", "Einflussnahme: Grosser politischer Einfluss auf die WHO ohne direktes demokratisches Mandat.", "Landbesitz: Massive Aufkäufe von Agrarland führen zur Spekulation mit Grundbedürfnissen."]
+        },
+        "Mark Zuckerberg": {
+            pro: ["Vernetzung: Ermöglicht grenzüberschreitende Kommunikation und soziale Mobilisierung.", "Gratis-Zugang: Bietet Milliarden Menschen kostenlosen Zugang zu digitalen Diensten.", "KI-Entwicklung: Open-Source-Ansätze bei KI
