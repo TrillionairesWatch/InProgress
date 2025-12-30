@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 20 Milliardäre | Eine Analyse der Mitte</title>
+    <title>Top 20 Milliardäre 2025 | Analyse Die Mitte</title>
     <style>
         :root {
             --mitte-orange: #ff7900;
             --mitte-blue: #003366;
-            --bg-light: #f8f9fa;
-            --text-dark: #2c3e50;
+            --bg-light: #f4f7f9;
             --white: #ffffff;
             --pro-color: #27ae60;
             --contra-color: #e74c3c;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Frutiger', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-light);
-            color: var(--text-dark);
+            color: #333;
             margin: 0;
-            padding: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         header {
             background-color: var(--mitte-blue);
             color: white;
-            padding: 3rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
             border-bottom: 6px solid var(--mitte-orange);
         }
@@ -35,131 +33,173 @@
         .container {
             max-width: 1100px;
             margin: 2rem auto;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
         }
 
-        .statement-box {
-            background: white;
+        .intro-box {
+            background: var(--white);
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
-            border-left: 5px solid var(--mitte-orange);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            border-left: 6px solid var(--mitte-orange);
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
         }
 
         .card-header {
             background: var(--mitte-blue);
             color: white;
-            padding: 1.2rem 1.5rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.2rem;
             font-weight: bold;
         }
 
-        .card-content {
-            padding: 1.5rem;
-        }
+        .card-body { padding: 1.5rem; }
 
-        .meta-info {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-        }
-
-        .analysis-section {
+        .analysis-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        h4 {
-            margin-top: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
+        .pro h4 { color: var(--pro-color); margin-top: 0; font-size: 0.9rem; text-transform: uppercase; }
+        .contra h4 { color: var(--contra-color); margin-top: 0; font-size: 0.9rem; text-transform: uppercase; }
 
-        .pro h4 { color: var(--pro-color); }
-        .contra h4 { color: var(--contra-color); }
+        ul { padding-left: 1.2rem; margin: 0; font-size: 0.95rem; }
+        li { margin-bottom: 0.5rem; }
 
-        ul {
-            padding-left: 1.2rem;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .loading-spinner {
+        #status-msg {
             text-align: center;
-            padding: 5rem;
-            font-style: italic;
+            padding: 2rem;
+            font-weight: bold;
+            color: var(--mitte-blue);
         }
 
         @media (max-width: 768px) {
-            .analysis-section { grid-template-columns: 1fr; }
+            .analysis-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Global Wealth Watch</h1>
-    <p>Die 20 reichsten Personen der Welt – Eine wirtschaftspolitische Einordnung</p>
+    <h1>Reichtum & Verantwortung 2025</h1>
+    <p>Wirtschaftspolitische Analyse aus der Mitte</p>
 </header>
 
 <div class="container">
-    <div class="statement-box">
-        <strong>Position der Mitte:</strong> Wir fördern Unternehmertum und Innovation als Motor für Wohlstand. 
-        Gleichzeitig mahnen wir die soziale Verantwortung an: Marktmacht darf den fairen Wettbewerb nicht ersticken, 
-        und internationale Konzerne müssen ihren Beitrag zum Gemeinwesen leisten.
+    <div class="intro-box">
+        <strong>Politischer Kompass:</strong> Als Mitte-Politiker unterstützen wir den Werkplatz und die Innovationskraft. Doch grosser Reichtum verpflichtet: Wir setzen uns für faire Steuern, Wettbewerb statt Monopole und den Schutz unserer sozialen Marktwirtschaft ein.
     </div>
 
-    <div id="loader" class="loading-spinner">Aktualisiere Echtzeit-Daten der Börsen...</div>
+    <div id="status-msg">Lade aktuelle Marktdaten der Top 20...</div>
     <div id="billionaire-grid" class="grid"></div>
 </div>
 
 <script>
-    // Politische Argumentations-Datenbank
+    // Politische Datenbank für die aktuelle Top-Riege (Stand Ende 2025)
     const politicalAnalysis = {
         "Elon Musk": {
-            pro: ["Pionier der Elektromobilität: Beschleunigt den globalen CO2-Ausstieg.", "Innovationskraft: Stärkt durch SpaceX und Starlink die westliche Technologie-Souveränität.", "Risikobereitschaft: Schafft tausende Arbeitsplätze in zukunftskritischen Branchen."],
-            contra: ["Führungsstil: Instabile Unternehmensführung gefährdet die Sicherheit der Arbeitnehmer.", "Mediale Macht: Nutzung von X (Twitter) zur Polarisierung untergräbt den demokratischen Konsens.", "Gewerkschaftsfeindlichkeit: Widerspricht dem Schweizer Modell der Sozialpartnerschaft."]
+            pro: ["Treibt mit SpaceX die technologische Unabhängigkeit des Westens voran.", "Beschleunigte den globalen Wandel zur Elektromobilität massiv.", "Schafft durch visionäre Projekte tausende Ingenieurs-Arbeitsplätze."],
+            contra: ["Polarisierender Kommunikationsstil gefährdet den gesellschaftlichen Zusammenhalt.", "Kritische Haltung zur Mitbestimmung widerspricht der Schweizer Sozialpartnerschaft.", "Konzentration von Satellitenmacht (Starlink) birgt geopolitische Risiken."]
+        },
+        "Larry Page": {
+            pro: ["Google hat den weltweiten Zugang zu Wissen demokratisiert.", "Massive Investitionen in KI-Forschung stärken die westliche Innovationskraft.", "Unterstützt durch Alphabet 'Moonshot'-Projekte in der Medizin."],
+            contra: ["De-facto-Monopol bei der Suche behindert den fairen digitalen Wettbewerb.", "Problematische Steueroptimierungspraktiken in europäischen Märkten.", "Intransparente Algorithmen beeinflussen die öffentliche Meinungsbildung."]
         },
         "Jeff Bezos": {
-            pro: ["Logistik-Effizienz: Senkt Kosten für Konsumenten und ermöglicht KMU globalen Absatz.", "Digitalisierung: AWS bildet das Rückgrat für moderne Cloud-Infrastruktur weltweit.", "Philanthropie: Massive Investitionen in Naturschutz durch den Bezos Earth Fund."],
-            contra: ["Steuervermeidung: Aggressive Optimierungspraktiken entziehen dem Staat wichtige Mittel.", "Marktdominanz: Setzt den lokalen Einzelhandel und KMU unter existenzbedrohenden Druck.", "Arbeitsbedingungen: Wiederkehrende Kritik an der Behandlung von Personal in Logistikzentren."]
-        },
-        "Bernard Arnault": {
-            pro: ["Kulturgut: Bewahrt und exportiert europäische Handwerkskunst und Qualität.", "Wirtschaftskraft: Beweis für die Stärke europäischer Familienunternehmen im globalen Markt.", "Steuerzahler: Leistet als einer der grössten Steuerzahler Frankreichs einen Beitrag zum Staat."],
-            contra: ["Ungleichheit: Fokus auf Ultra-Luxus symbolisiert die wachsende Schere zwischen Reich und Arm.", "Dynastien-Bildung: Konzentration von Macht in Familienbesitz behindert soziale Mobilität.", "Ressourcenverbrauch: Hoher ökologischer Fussabdruck der Fast-Luxury-Industrie."]
-        },
-        "Bill Gates": {
-            pro: ["Globale Gesundheit: Durchbruch bei der Bekämpfung von Malaria und Polio.", "Klimaforschung: Investiert Milliarden in Kernfusion und CO2-Speicherung.", "Engagement: Vorbild für 'Giving Pledge', Reichtum der Gesellschaft zurückzugeben."],
-            contra: ["Monopolbildung: Frühere Microsoft-Praktiken schadeten dem freien Software-Wettbewerb.", "Einflussnahme: Grosser politischer Einfluss auf die WHO ohne direktes demokratisches Mandat.", "Landbesitz: Massive Aufkäufe von Agrarland führen zur Spekulation mit Grundbedürfnissen."]
+            pro: ["Effizienz-Revolution im Handel kommt den Endkonsumenten zugute.", "Cloud-Infrastruktur (AWS) ist essenziell für die Digitalisierung von KMU.", "Investiert Milliarden in den Naturschutz (Bezos Earth Fund)."],
+            contra: ["Dominanz von Amazon setzt den lokalen Detailhandel unter massiven Druck.", "Berichte über hohen Leistungsdruck und prekäre Arbeitsbedingungen.", "Mangelnde Transparenz bei der Besteuerung grenzüberschreitender Gewinne."]
         },
         "Mark Zuckerberg": {
-            pro: ["Vernetzung: Ermöglicht grenzüberschreitende Kommunikation und soziale Mobilisierung.", "Gratis-Zugang: Bietet Milliarden Menschen kostenlosen Zugang zu digitalen Diensten.", "KI-Entwicklung: Open-Source-Ansätze bei KI
+            pro: ["Ermöglichte globale Vernetzung und digitale Gemeinschaften.", "Plattformen bieten KMU effiziente Wege für weltweites Marketing.", "Frühzeitiges Investment in Open-Source KI-Modelle."],
+            contra: ["Wiederkehrende Defizite beim Schutz der Privatsphäre von Bürgern.", "Algorithmen begünstigen Echo-Kammern und politische Polarisierung.", "Übernahme von Konkurrenten (WhatsApp/Instagram) erstickt Innovation."]
+        },
+        "Warren Buffett": {
+            pro: ["Steht für langfristiges, substanzorientiertes Investieren statt Zockerei.", "Fordert aktiv höhere Steuern für Superreiche (Philanthropie-Vorbild).", "Verkörpert Bescheidenheit und Integrität im Finanzsektor."],
+            contra: ["Fokus auf 'Moat'-Unternehmen (Monopole) kann den Wettbewerb bremsen.", "Lange Abhängigkeit von fossilen Energieträgern im Portfolio.", "Enorme Cash-Reserven könnten produktiver im Wirtschaftskreislauf wirken."]
+        }
+    };
+
+    const defaultAnalysis = {
+        pro: ["Schafft Wohlstand durch Unternehmertum.", "Investiert privates Kapital in Innovationen.", "Stärkt die globale Wettbewerbsfähigkeit."],
+        contra: ["Hohe Vermögenskonzentration gefährdet die soziale Balance.", "Gefahr von Marktmonopolen zulasten kleinerer Anbieter.", "Oft mangelnde Transparenz bei internationalen Steuerflüssen."]
+    };
+
+    async function fetchBillionaires() {
+        const grid = document.getElementById('billionaire-grid');
+        const status = document.getElementById('status-msg');
+        
+        // Wir nutzen den Statically CDN Link für die API-Daten von komed3, um CORS-Probleme zu umgehen
+        const apiUrl = 'https://cdn.statically.io/gh/komed3/rtb-api/main/api/billionaires.json';
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error('Netzwerk-Antwort war nicht ok');
+            
+            const data = await response.json();
+            // Die API liefert ein Array von Objekten
+            const top20 = data.slice(0, 20);
+
+            status.style.display = 'none';
+            grid.innerHTML = '';
+
+            top20.forEach((p, i) => {
+                let analysis = defaultAnalysis;
+                // Namensprüfung für spezifische Pro/Contra Punkte
+                for (let name in politicalAnalysis) {
+                    if (p.name.toLowerCase().includes(name.toLowerCase())) {
+                        analysis = politicalAnalysis[name];
+                        break;
+                    }
+                }
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span>#${i + 1} ${p.name}</span>
+                        <span>$${(p.net_worth / 1000).toFixed(1)} Mrd.</span>
+                    </div>
+                    <div class="card-body">
+                        <small>📍 ${p.country} | 🏢 ${p.source}</small>
+                        <div class="analysis-grid">
+                            <div class="pro">
+                                <h4>Pro (Mitte-Sicht)</h4>
+                                <ul>${analysis.pro.map(item => `<li>${item}</li>`).join('')}</ul>
+                            </div>
+                            <div class="contra">
+                                <h4>Contra (Mitte-Sicht)</h4>
+                                <ul>${analysis.contra.map(item => `<li>${item}</li>`).join('')}</ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        } catch (error) {
+            status.innerHTML = "❌ Fehler beim Laden: " + error.message + "<br><small>Tipp: Überprüfe deine Internetverbindung oder versuche es in 5 Minuten erneut.</small>";
+            console.error('API Error:', error);
+        }
+    }
+
+    fetchBillionaires();
+</script>
+
+</body>
+</html>
